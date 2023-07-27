@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Product>;
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="text-end">
+    <a class="btn btn-primary" asp-controller="Product" asp-action="Create">Create</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=product.Id})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
